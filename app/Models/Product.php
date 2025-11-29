@@ -14,4 +14,9 @@ class Product extends Model
         'stock',
     ];
 
+    public function holds()
+    {
+        return $this->hasMany(Hold::class);
+    }
+
 }
