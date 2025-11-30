@@ -7,5 +7,5 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('products/{id}', [ProductController::class, 'show']);
-Route::get('hold/{product_id}/{qty}', [HoldController::class, 'create']);
+Route::post('hold', [HoldController::class, 'create']);
 Route::post('order', [OrderController::class, 'createOrder']);
