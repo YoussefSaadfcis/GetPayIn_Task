@@ -16,4 +16,9 @@ class Order extends Model
     {
         return $this->belongsTo(Hold::class);
     }
+
+    public function webhocks()
+    {
+        return $this->has(Webhock::class);
+    }
 }

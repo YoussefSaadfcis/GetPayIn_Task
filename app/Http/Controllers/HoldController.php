@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HoldStatus;
 use App\Http\Requests\HoldRequest;
 use App\Models\Hold;
 use App\Models\Product;
@@ -28,7 +29,7 @@ class HoldController extends Controller
             $Hold = Hold::create([
                 'product_id' => $validated['product_id'],
                 'expires_at' => $expires_at,
-                'status' => 'active',
+                'status' => HoldStatus::EXPIRED->value,
                 'quantity' => $validated['qty'],
             ]);
 
@@ -42,7 +43,6 @@ class HoldController extends Controller
 
             Log::alert("Failed to make Hold for product_id: {$validated['product_id']}", ['error' => $e->getMessage()]);
             DB::rollBack();
-
             return response()->json(['error' => 'Failed to create hold.'], 500);
         }
     }

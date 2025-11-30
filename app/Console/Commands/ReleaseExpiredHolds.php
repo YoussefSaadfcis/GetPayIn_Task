@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\HoldStatus;
 use App\Models\Hold;
 use App\Models\Product;
 use Illuminate\Console\Command;
@@ -31,7 +32,9 @@ class ReleaseExpiredHolds extends Command
     {
         Log::alert("Starting release of expired holds.");
 
-        $expiredHolds = Hold::with('product')->where('expires_at', '<=', now())->get();
+        $expiredHolds = Hold::with('product')->where('expires_at', '<=', now())
+            ->where('status', HoldStatus::EXPIRED->value)
+            ->get();
         foreach ($expiredHolds as $hold) {
             DB::beginTransaction();
             try {
