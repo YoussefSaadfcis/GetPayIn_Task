@@ -24,11 +24,13 @@ class HoldRequest extends FormRequest
     {
         return [
             'qty' => 'required|integer|min:1',
-            'product_id' => ['required',Rule::exists('products', 'id')->where(function ($query) {
-                $query->where('id', $this->input('product_id'))
-                      ->where('stock', '>=', $this->input('qty'));
-            }),
-        ],
+            'product_id' => 'required|integer|exists:products,id',
+            
+            // 'product_id' => ['required',Rule::exists('products', 'id')->where(function ($query) {
+            //     $query->where('id', $this->input('product_id'))
+            //           ->where('stock', '>=', $this->input('qty'));
+            // }),
+        // ],
         ];
     }
 }
