@@ -8,4 +8,5 @@ enum HockStatus: string
     case pending_order = 'pending_order';
     case COMPLETED = 'completed';
     case FAILED = 'failed';
+    case DUPLICATE = 'duplicate';
 }

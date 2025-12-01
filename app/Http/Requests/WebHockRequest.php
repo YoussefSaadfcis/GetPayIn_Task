@@ -23,7 +23,7 @@ class WebHockRequest extends FormRequest
     {
         return [
             'idempotency_key' => 'required|string',
-            'order_id' => 'required|exists:orders,id',
+            'order_id' => 'required',
             'status' => 'required|string',
         ];
     }

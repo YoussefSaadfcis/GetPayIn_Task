@@ -29,7 +29,7 @@ class OrderController extends Controller
             $Hold->update(['status'=>HoldStatus::ACTIVE->value]);
             cache()->forget('products/' . $Hold->product_id);
             
-            Log::alert("Order created for hold_id: {$validated['hold_id']}");
+            Log::info("Order created for hold_id: {$validated['hold_id']}");
         DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

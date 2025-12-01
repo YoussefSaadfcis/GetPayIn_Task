@@ -9,3 +9,4 @@ use Illuminate\Support\Facades\Schedule;
 // })->purpose('Display an inspiring quote');
 
 Schedule::command('app:release-expired-holds')->everyMinute()->withoutOverlapping();
+Schedule::command('app:process-pending-webhooks')->everyMinute()->withoutOverlapping();
