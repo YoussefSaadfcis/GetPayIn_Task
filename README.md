@@ -70,12 +70,6 @@ This project uses Laravel scheduled tasks. To run the schedule in the foreground
 php artisan schedule:work
 ```
 
-For production you should run the scheduler as a daemon (systemd, supervisor, or a process manager). Example (in background):
-
-```bash
-# run in background (development/test only)
-nohup php artisan schedule:work > /dev/null 2>&1 &
-```
 
 ## Optional: Seed database
 
